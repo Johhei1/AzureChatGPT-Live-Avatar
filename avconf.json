@@ -1,0 +1,23 @@
+{
+  "AzureSpeechResource": {
+    "Region": "",
+    "SubscriptionKey": ""
+  },
+  "ICEServer": {
+    "URL": "",
+    "Username": "",
+    "Credential": ""
+  },
+  "TTSConfiguration": {
+    "Voice": "en-US-JennyNeural",
+    "CustomVoiceEndpointId": ""
+  },
+  "AvatarConfiguration": {
+    "Character": "lisa",
+    "Style": "casual-sitting",
+    "BackgroundColor": "#FFFFFFFF",
+    "CustomAvatar": false,
+    "TransparentBackground": false,
+    "VideoCrop": true
+  }
+}

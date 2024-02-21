@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Live Agent</title>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=U10d7xLj"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Common styles for the body and general elements */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Mulish', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Styles for the chat-like interface */
+        #content {
+            width: 600px; /* Increase content width */
+            background-color: #282828;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            padding: 20px;
+            width: 100%;
+            margin-bottom: 20px; /* Add some space at the bottom */
+        }
+
+        .message {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+
+        #user-input-field {
+            width: calc(100% - 20px);
+            padding: 10px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 5px;
+            margin: 0;
+            margin-top: 10px;
+        }
+
+        #microphone-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 60%;
+            padding: 15px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            #microphone-button:hover {
+                background-color: #555;
+            }
+
+        /* Video container styles */
+        #video-wrapper {
+            background: linear-gradient(to bottom, #1e1e1e, #333333);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        #videoContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 1500px; /* Increase the width of the container */
+            height: 1500px; /* Increase the height of the container */
+            border-radius: 60%; /* Adjust border-radius to maintain a circular shape */
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        #remoteVideo {
+            width: 100%; /* Ensure the video covers the entire container width */
+            height: 100%; /* Ensure the video covers the entire container height */
+            border-radius: 50%; /* Maintain circular shape */
+            object-fit: cover; /* Cover without distortion */
+            border: 5px solid #333; /* Add a border */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Add a subtle shadow */
+            position: relative;
+        }
+
+        video {
+            width: 100%; /* To ensure video covers the circular container */
+            height: 100%; /* To ensure video covers the circular container */
+            border-radius: 50%; /* Maintain circular shape */
+            object-fit: cover; /* Cover without distortion */
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <!--<div id="video-wrapper"> -->
+        <div id="videoContainer" style="position: relative; width: 960px;">
+            <div id="remoteVideo">
+                <video autoplay>
+                    <!-- Your video source here -->
+                </video>
+            </div>
+
+            <!--</div>-->
+        </div>
+        <div id="chat-box">
+            <div class="message">AI: Hello! How can I assist you today?</div>
+        </div>
+        <input type="text" id="user-input-field" placeholder="Type your message...">
+        <button id="microphone-button" title="Speak" aria-label="Speak">
+            <i class="fas fa-microphone"></i>
+        </button>
+    </div>
+    <script>
+        // Function to convert URLs in text to clickable links
+        function linkify(text) {
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, function (url) {
+                return `<a href="${url}" target="_blank">${url}</a>`; // This opens links in a new tab
+            });
+        }
+    </script>
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+    <script type="module" src="./index.js"></script>
+</body>
+    </html >
